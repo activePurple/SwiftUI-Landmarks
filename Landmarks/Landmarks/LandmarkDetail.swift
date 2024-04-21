@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
+    @Environment(ModelData.self) var modelData
     var landmark: Landmark
     
+    var landmarkIndex: Int {
+            modelData.landmarks.firstIndex(where: { $0.id == landmark.id })!
+        }
+    
     var body: some View {
+        @Bindable var modelData = modelData
+        
         ScrollView { // Changed to scroll view for interactivity
             
             MapView(coordinate: landmark.locationCoordinate) // pulls in our mapview from our previous page
@@ -22,10 +29,12 @@ struct LandmarkDetail: View {
             
             VStack(alignment: .leading) { // Vertical stack to keep items in lnline top to bottom
                 
-                Text(landmark.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.green)
+                HStack {
+                    
+                    Text(landmark.name)
+                        .font(.title)
+                    FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
+                }
                 
                 HStack { // Hstack is for our horizontal stacked or aligned text
                     
@@ -52,5 +61,7 @@ struct LandmarkDetail: View {
     }
 }
 #Preview {
-    LandmarkDetail(landmark: ModelData().landmarks[0])
+    let modelData = ModelData()
+    return LandmarkDetail(landmark: modelData.landmarks[0])
+        .environment(modelData)
 }

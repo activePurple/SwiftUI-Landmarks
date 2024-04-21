@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// ModelData is the class that will passed downwards in the hierarchy using the enviroment modifier
 @Observable
 class ModelData {
     // Creates the array of landmarks when initialized from the JSON file
