@@ -8,7 +8,14 @@
 import Foundation
 
 
-var landmarks: [Landmark] = load("landmarkData.json") // Creates the array of landmarks when initialized from the JSON file
+@Observable
+class ModelData {
+    // Creates the array of landmarks when initialized from the JSON file
+    // SwiftUI will update the view based the state of observable variables
+    var landmarks: [Landmark] = load("landmarkData.json")
+}
+
+
 
 
 func load<T: Decodable>(_ filename: String) -> T {
