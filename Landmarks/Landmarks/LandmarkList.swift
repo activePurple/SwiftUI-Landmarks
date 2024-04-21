@@ -10,9 +10,11 @@ import SwiftUI
 
 struct LandmarkList: View {
     var body: some View {
-        List {
-            LandmarkRow(landmark: landmarks[0])
-            LandmarkRow(landmark: landmarks[1])
+        
+        // By conforming to Identifiable protocol we can call the landmark element
+        
+        List(landmarks) { landmark in
+            LandmarkRow(landmark: landmark) // Loading the landmark row list
         }
     }
 }

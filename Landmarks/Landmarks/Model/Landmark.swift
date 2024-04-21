@@ -10,7 +10,7 @@ import SwiftUI
 import CoreLocation
 
 
-struct Landmark: Hashable, Codable { // Codable is what will Decoable useful later on for the decoding of the JSON file
+struct Landmark: Hashable, Codable, Identifiable { // Codable is what will Decoable useful later on for the decoding of the JSON file
     var id: Int
     var name: String
     var park: String
