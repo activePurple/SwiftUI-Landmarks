@@ -10,11 +10,24 @@ import SwiftUI
 
 struct LandmarkList: View {
     var body: some View {
-        
-        // By conforming to Identifiable protocol we can call the landmark element
-        
-        List(landmarks) { landmark in
-            LandmarkRow(landmark: landmark) // Loading the landmark row list
+        NavigationSplitView {
+            // By conforming to Identifiable protocol we can call the landmark element
+            List(landmarks) { landmark in
+                
+                NavigationLink {
+                    LandmarkDetail()
+                    
+                } label: {
+                    
+                    LandmarkRow(landmark: landmark) // Ties the row to the detail through navigation link
+                }
+            }
+            .navigationTitle("Landmarks") // Navigation Menu needs a title
+            
+        } detail: {
+            
+            Text("Select a Landmark")
+            
         }
     }
 }
