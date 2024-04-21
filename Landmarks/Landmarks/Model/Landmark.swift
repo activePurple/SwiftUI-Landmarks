@@ -16,6 +16,7 @@ struct Landmark: Hashable, Codable, Identifiable { // Codable is what will Decoa
     var park: String
     var state: String
     var description: String
+    var isFavorite: Bool
     
     
     private var imageName: String // Reads the image name from the data

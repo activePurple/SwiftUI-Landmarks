@@ -9,10 +9,20 @@ import SwiftUI
 
 
 struct LandmarkList: View {
+    @State private var showFavoritesOnly = false // adds the state method in so we can update this variable
+    
+    var filteredLandmarks: [Landmark] { // Filtered View for favorites
+            landmarks.filter { landmark in
+                (!showFavoritesOnly || landmark.isFavorite)
+            }
+        }
+    
     var body: some View {
+        
         NavigationSplitView {
+           
             // By conforming to Identifiable protocol we can call the landmark element
-            List(landmarks) { landmark in
+            List(filteredLandmarks) { landmark in
                 
                 NavigationLink {
                     LandmarkDetail(landmark: landmark)

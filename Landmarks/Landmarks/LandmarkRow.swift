@@ -21,7 +21,14 @@ struct LandmarkRow: View {
             
             Text(landmark.name) // Calling the landmark name property from the first entry in the json data
             Spacer() // Spacers when applied in the Hstack work in the direction of the stack
+            
+            
         }
+        if landmark.isFavorite {
+                        Image(systemName: "star.fill") // Built in system images to be used for icons
+            
+                .foregroundStyle(.yellow) // altered color from black to yellow
+                    }
     }
 }
 
