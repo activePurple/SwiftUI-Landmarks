@@ -9,8 +9,10 @@ import SwiftUI
 
 
 struct CircleImage: View {
+    var image: Image
+    
     var body: some View {
-        Image("turtlerock")
+        image
             .clipShape(Circle()) // creates the circle clipping around our image itself
             .overlay {
                 Circle().stroke(.green, lineWidth: 4) // green line painted onto circle clip for image
@@ -23,5 +25,5 @@ struct CircleImage: View {
 
 
 #Preview {
-    CircleImage()
+    CircleImage(image: Image("turtlerock")) // inital failure to build when setting up due to detail view needing the parameter set as well
 }
